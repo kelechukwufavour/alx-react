@@ -1,19 +1,20 @@
+import React from 'react';
 import './App.css';
-import logo from './Holberton.svg';
+import logo from './holberton-logo.jpg';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="App-header">
+        <img src={logo} alt="Holberton Logo" />
         <h1>School dashboard</h1>
-      </header>
-      <body className="App-body">
+      </div>
+      <div className="App-body">
         <p>Login to access the full dashboard</p>
-      </body>
-      <footer className="App-footer">
+      </div>
+      <div className="App-footer">
         <p>Copyright 2020 - holberton School</p>
-      </footer>
+      </div>
     </div>
   );
 }
