@@ -2,28 +2,46 @@
   --color-brand: #e01d3f;
 }
 
+/* Header Styles */
 .App-header {
   display: flex;
   align-items: center;
-  color: var(--color-brand);
-  font-size: 20px;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff; /* Assuming you want a white background */
   border-bottom: 3px solid var(--color-brand);
 }
 
 .App-header img {
-  width: 200px;
+  max-width: 100%;
+  height: auto;
 }
 
+/* Body Styles */
 .App-body {
   margin: 50px;
 }
 
+/* Footer Styles */
 .App-footer {
-  border-top: 3px solid var(--color-brand);
-  width: 100%;
-  display: flex;
-  justify-content: center;
   position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #fff; /* Assuming you want a white background */
+  border-top: 3px solid var(--color-brand);
+  text-align: center;
   font-style: italic;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .App-header, .App-footer {
+    padding: 10px;
+  }
+
+  .App-body {
+    margin: 20px;
+  }
 }
