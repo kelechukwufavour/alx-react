@@ -8,12 +8,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #fff; /* Assuming you want a white background */
+  background-color: #fff; /* White background */
   border-bottom: 3px solid var(--color-brand);
 }
 
 .App-header img {
-  max-width: 100%;
+  max-width: 200px; /* Limiting the width */
   height: auto;
 }
 
@@ -29,7 +29,7 @@
   left: 0;
   width: 100%;
   padding: 10px 20px;
-  background-color: #fff; /* Assuming you want a white background */
+  background-color: #fff; /* White background */
   border-top: 3px solid var(--color-brand);
   text-align: center;
   font-style: italic;
@@ -37,11 +37,16 @@
 
 /* Media Query for responsiveness */
 @media (max-width: 768px) {
-  .App-header, .App-footer {
+  .App-header, 
+  .App-footer {
     padding: 10px;
   }
 
   .App-body {
     margin: 20px;
+  }
+
+  .App-header img {
+    max-width: 150px; /* Adjusting the image width for smaller screens */
   }
 }
