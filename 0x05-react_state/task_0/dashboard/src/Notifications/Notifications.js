@@ -24,7 +24,7 @@ class Notifications extends Component {
     return (
       <React.Fragment>
         {!this.props.displayDrawer ? (
-          <div className={css(styles.menuItem)}>
+          <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
             <p>Your notifications</p>
           </div>
         ) : (
@@ -45,6 +45,7 @@ class Notifications extends Component {
               aria-label="Close"
               onClick={(e) => {
                 console.log("Close button has been clicked");
+                this.props.handleHideDrawer();
               }}
             >
               <img src={closeIcon} alt="close icon" width="10px" />
@@ -127,11 +128,15 @@ const styles = StyleSheet.create({
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
+  handleDisplayDrawer: () => {},
+  handleHideDrawer: () => {},
 };
 
 export default Notifications;
