@@ -1,4 +1,4 @@
-iimport React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, css } from "aphrodite";
 
@@ -21,9 +21,21 @@ class NotificationItem extends React.PureComponent {
 const styles = StyleSheet.create({
   default: {
     color: "blue",
+    "@media (max-width: 375px)": {
+      borderBottom: "1px solid black",
+      listStyle: "none",
+      fontSize: "20px",
+      padding: "10px 8px",
+    },
   },
   urgent: {
     color: "red",
+    "@media (max-width: 375px)": {
+      borderBottom: "1px solid black",
+      listStyle: "none",
+      fontSize: "20px",
+      padding: "10px 8px",
+    },
   },
 });
 
