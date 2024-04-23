@@ -1,6 +1,5 @@
-
 import React, { Component } from "react";
-import "./Notifications.css";
+import { StyleSheet, css } from "aphrodite";
 import closeIcon from "../assets/close-icon.png";
 import NotificationItem from "./NotificationItem";
 import PropTypes from "prop-types";
@@ -24,11 +23,12 @@ class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="menuItem">
-          <p>Your notifications</p>
-        </div>
-        {this.props.displayDrawer ? (
-          <div className="Notifications">
+        {!this.props.displayDrawer ? (
+          <div className={css(styles.menuItem)}>
+            <p>Your notifications</p>
+          </div>
+        ) : (
+          <div className={css(styles.Notifications)}>
             <button
               style={{
                 color: "#3a3a3a",
@@ -57,11 +57,72 @@ class Notifications extends Component {
               })}
             </ul>
           </div>
-        ) : null}
+        )}
       </React.Fragment>
     );
   }
 }
+
+const opacityAnim = {
+  "0%": { opacity: 0.5 },
+  "100%": { opacity: 1 },
+};
+
+const bounceAnim = {
+  "0%": { transform: "translateY(0px)" },
+  "33%": { transform: "translateY(-5px)" },
+  "66%": { transform: "translateY(5px)" },
+  "100%": { transform: "translateY(0px)" },
+};
+
+const styles = StyleSheet.create({
+  Notifications: {
+    padding: "1em",
+    border: "2px dashed red",
+    position: "absolute",
+    top: "1.8em",
+    right: "0",
+    zIndex: "100",
+    "@media (max-width: 900px)": {
+      width: "100%",
+      padding: "0px",
+      fontSize: 20,
+      position: "relative",
+      right: 0,
+      left: 0,
+      border: "none",
+    },
+  },
+
+  "notification-header": {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+
+  menuItem: {
+    position: "relative",
+    zIndex: 100,
+    textAlign: "right",
+    ":hover": {
+      cursor: "pointer",
+      animationName: [opacityAnim, bounceAnim],
+      animationDuration: "1s, 0.5s",
+      animationIterationCount: "3",
+    },
+  },
+
+  ul: {
+    "@media (max-width: 900px)": {
+      padding: 0,
+    },
+  },
+  button: {
+    "@media (max-width: 900px)": {
+      position: "relative",
+      float: "right",
+    },
+  },
+});
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
