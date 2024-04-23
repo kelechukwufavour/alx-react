@@ -2,6 +2,13 @@ import { shallow } from "enzyme";
 import React from "react";
 import Login from "./Login";
 
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
 describe("Header", () => {
   it("should render without crashing", () => {
     const wrapper = shallow(<Login />);

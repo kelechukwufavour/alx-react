@@ -1,20 +1,19 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
+import React from "react";
+import BodySection from "./BodySection";
+import { shallow } from "enzyme";
 
-class BodySection extends Component {
-  render() {
-    return (
-      <div className="bodySection">
-        <h2>{this.props.title}</h2>
-        {this.props.children}
-      </div>
+describe("BodySection tests", () => {
+  it("should render correctly", () => {
+    const wrapper = shallow(
+      <BodySection title="test title">
+        <p>test children node</p>
+      </BodySection>
     );
-  }
-}
 
-BodySection.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-};
-
-export default BodySection;
+    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.exists("h2")).toBe(true);
+    expect(wrapper.find("h2").html()).toEqual("<h2>test title</h2>");
+    expect(wrapper.exists("p")).toBe(true);
+    expect(wrapper.find("p").text()).toEqual("test children node");
+  });
+});

@@ -3,6 +3,13 @@ import { shallow } from "enzyme";
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
 import BodySection from "./BodySection";
 
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
 describe("BodySectionWithMarginBottom tests", () => {
   it("should apply margin bottom to child component", () => {
     const wrapper = shallow(<BodySectionWithMarginBottom title="test title" />);

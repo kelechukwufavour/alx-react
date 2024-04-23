@@ -2,6 +2,14 @@ import React from "react";
 import Header from "./Header";
 import { shallow } from "enzyme";
 
+
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
 describe("Header", () => {
   it("render without crashing", () => {
     const wrapper = shallow(<Header />);
