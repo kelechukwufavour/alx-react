@@ -37,8 +37,10 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.handleKeyCombination = this.handleKeyCombination.bind(this);
+    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = {
       user,
+      listNotifications: listNotificationsInitialState,
     };
   }
 
@@ -47,6 +49,14 @@ export class App extends Component {
       alert("Logging you out");
       this.props.logout();
     }
+  }
+
+  markNotificationAsRead(id) {
+    this.setState({
+      listNotifications: this.state.listNotifications.filter((notification) => {
+        return notification.id !== id;
+      }),
+    });
   }
 
   componentDidMount() {
@@ -58,7 +68,7 @@ export class App extends Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { user, listNotifications } = this.state;
 
     const {
       isLoggedIn,
@@ -72,9 +82,11 @@ export class App extends Component {
     return (
       <>
         <Notifications
+          listNotifications={listNotifications}
           displayDrawer={displayDrawer}
           handleDisplayDrawer={displayNotificationDrawer}
           handleHideDrawer={hideNotificationDrawer}
+          markNotificationAsRead={this.markNotificationAsRead}
         />
         <div className={css(styles.container)}>
           <div className={css(styles.app)}>
@@ -161,7 +173,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     textAlign: "center",
-    position: "static",
+    position: "fixed",
     paddingBottom: "10px",
     bottom: 0,
     fontStyle: "italic",
@@ -173,8 +185,8 @@ const styles = StyleSheet.create({
 
 export const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.ui.get("isUserLoggedIn"),
-    displayDrawer: state.ui.get("isNotificationDrawerVisible"),
+    isLoggedIn: state.get("isUserLoggedIn"),
+    displayDrawer: state.get("isNotificationDrawerVisible"),
   };
 };
 
