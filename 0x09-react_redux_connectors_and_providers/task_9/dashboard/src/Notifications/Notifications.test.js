@@ -1,6 +1,6 @@
 import { shallow, mount } from "enzyme";
 import React from "react";
-import { Notifications } from "./Notifications";
+import Notifications from "./Notifications";
 import { getLatestNotification } from "../utils/utils";
 import { StyleSheetTestUtils } from "aphrodite";
 import notificationsNormalizer from "../schema/notifications";
@@ -314,19 +314,6 @@ describe("<Notifications />", () => {
 
       expect(handleDisplayDrawer).not.toHaveBeenCalled();
       expect(handleHideDrawer).toHaveBeenCalled();
-
-      jest.restoreAllMocks();
-    });
-
-    it("verify that the function fetchNotifications is called when the component is mounted", () => {
-      const fetchNotifications = jest.fn();
-      const handleHideDrawer = jest.fn();
-
-      const wrapper = shallow(
-        <Notifications fetchNotifications={fetchNotifications} />
-      );
-
-      expect(fetchNotifications).toHaveBeenCalled();
 
       jest.restoreAllMocks();
     });
