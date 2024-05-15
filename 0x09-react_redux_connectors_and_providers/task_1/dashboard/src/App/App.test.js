@@ -21,4 +21,13 @@ describe("<App />", () => {
 
     expect(result).toEqual({ isLoggedIn: true });
   });
+  it("mapStateToProps returns the right object from display Drawer", () => {
+    let state = fromJS({
+      isNotificationDrawerVisible: true,
+    });
+
+    const result = mapStateToProps(state);
+
+    expect(result).toEqual({ displayDrawer: true });
+  });
 });
